@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>验证码</title>
+    <style>
+        #verifycode {
+            width: 100px;
+            height: 40px;
+            background: #ccc;
+            margin: 40px auto;
+            line-height: 40px;
+            text-align: center;
+            font-size: 16px;
+            letter-spacing: 3px;
+            -webkit-user-select: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="verifycode"></div>
+
+<script type="text/javascript">
+    /*
+     * 步骤
+     *       1，规定允许出现字符串的范围 这62个字符的索引分别是[0,61].
+     *       2,Math.round(Math.random()*(61-0)+0)，获取0-61的随机整数
+     *
+     *
+     * */
+    function ranstr() {
+        var str = "0123456789abcdfeghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"; //62
+        //str.charAt(随机索引);
+
+        //我们通过随机索引获取随机的字符，但是我们要获取4次。
+        var str1 = "";
+        for (var i = 0; i < 4; i++) {
+            var ranIndex = Math.round(Math.random() * 61);//我们获取了一个随机的索引
+            str1 += str.charAt(ranIndex);
+        }
+        document.getElementById("verifycode").innerHTML=str1;
+    }
+    ranstr();
+    verifycode.onclick=function(){
+        ranstr();
+    }
+   //console.log(str1);
+</script>
+</body>
+</html>
